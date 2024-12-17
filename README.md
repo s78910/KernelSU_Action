@@ -4,7 +4,7 @@
 
 用于 Non-GKI Kernel 的 Action，具有一定的普遍性，需要了解内核及 Android 的相关知识得以运用。
 
-## 警告:warning: :warning: :warning:
+## 警告 :warning: :warning: :warning:
 
 如果你不是内核作者，使用他人的劳动成果构建 KernelSU，请仅供自己使用，不要分享给别人，这是对原作者的劳动成果的尊重。
 
@@ -119,10 +119,12 @@ Fork 本仓库到你的储存库然后按照以下内容编辑 config.env，之�
 
 #### KernelSU Branch or Tag
 
+[KernelSU 1.0 已经不再支持非 GKI 内核](https://github.com/tiann/KernelSU/issues/1705)，最后的支持版本为 [v0.9.5](https://github.com/tiann/KernelSU/tree/v0.9.5)，请注意使用正确的分支
+
 选择 KernelSU 的分支或 tag:
 
-- main 分支(开发版): `KERNELSU_TAG=main`
-- 最新 TAG(稳定版): `KERNELSU_TAG=`
+- ~~main 分支(开发版): `KERNELSU_TAG=main`~~
+- 最新 TAG(稳定版): `KERNELSU_TAG=v0.9.5`
 - 指定 TAG(如`v0.5.2`): `KERNELSU_TAG=v0.5.2`
 
 #### KernelSU Manager signature size and hash
@@ -151,6 +153,35 @@ LTO 用于优化内核，但有些时候会导致错误
 
 此参数为 KernelSU 模块和 system 分区读写提供支持
 自动在 defconfig 注入参数
+
+### Apply KernelSU Patch
+
+如果 kprobe 工作不正常（通常是上游的 bug 或者内核版本过低），那你可以尝试启用此参数
+
+自动修改内核源码以支持 KernelSU  
+参见：[如何为非GKI设备集成 KernelSU](https://kernelsu.org/zh_CN/guide/how-to-integrate-for-non-gki.html#modify-kernel-source-code)
+
+### Remove unused packages
+
+清理无用的包，以获得更大的磁盘空间
+
+如果你需要这些包，请关闭此项
+
+### AnyKernel3
+
+#### Use custom AnyKernel3
+
+可以使用自定义的 AnyKernel3
+
+#### Custom AnyKernel3 Source
+
+> 如果是 git 仓库，请填写包含`.git`的链接
+
+支持 git 仓库或者 zip 压缩包的直链
+
+#### AnyKernel3 Branch
+
+自定义 AnyKernel3 的仓库分支
 
 ### Enable ccache
 
